@@ -1,0 +1,83 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player with Dynamic Background</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #008AD8;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .audio-player {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    audio {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    @media (max-width: 600px) {
+      audio {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background" id="background"></div>
+  <div class="audio-player">
+    <audio controls>
+      <source src="rocky raccoon take 2.cwp" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    // Array of local background images in the repository
+    const backgrounds = [
+      'raccoon-1672193539Wac.jpg', // Replace with your actual file paths
+      'raccoon-in-the-wild.jpg',
+      'raccoons-at-christmastime-1696360696vf0.jpg',
+      'raton-laveur-2.jpg',
+      'raton-laveur-3.jpg',
+      'twins.jpg'
+    ];
+
+    // Get a random background image
+    const randomImage = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+    // Set the background image
+    const backgroundDiv = document.getElementById('background');
+    backgroundDiv.style.backgroundImage = `url('${randomImage}')`;
+  </script>
+</body>
+</html>
